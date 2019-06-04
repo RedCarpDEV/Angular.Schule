@@ -1,0 +1,20 @@
+
+<!--
+  alles was in dem div is und auch das div selbst
+  wird mit ngFor dupliziert
+  und dann werden die bindings gesetzt:
+   - ngclass Klasse wird gesetzt auf die css klasse in der dashboard.component.scss
+     vorausgesetzt die bedingung o stimmt
+   - book wird auf die variable b gesetzt.
+-->
+
+
+<div
+  *ngFor="let b of books; odd as o"
+  [ngClass]="{ grayBackground: o }">
+  <br-book
+    [book]=b
+    ></br-book>
+</div>
+
+<p>Anzahl aller Bücher {{ books.length }}</p>
