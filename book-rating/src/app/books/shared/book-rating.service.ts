@@ -10,9 +10,10 @@ export class BookRatingService {
   readonly maxRating = 5;
 
   rateUp(book: Book) {
+    const rating = book.rating < this.maxRating ? book.rating + 1 : book.rating;
     return {
       ...book,
-      rating: book.rating < this.maxRating ? book.rating + 1 : book.rating
+      rating
     };
   }
 
