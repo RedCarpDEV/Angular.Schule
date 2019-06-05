@@ -1,22 +1,22 @@
-<!-- book.component.html -->
 <div class="card mb-4">
-    <div class="card-body bg-light">
-        <img class="img-thumbnail float-right"
-          src="//api.angular.schule/avatar/{{ book.rating }}">
-      <div class="card-title">
-        <h2>
-          {{ book.title }}
-          <span *ngFor="let s of stars">*</span>
-          <span class="badge badge-secondary">{{ book.rating }}</span>
-        </h2>
-      </div>
-      <p>{{ book.description }}</p>
-
-      <button
-        (click)="doRateDown()"
-        type="button" class="btn btn-secondary mr-2">-1</button>
-      <button
-        (click)="doRateUp()"
-        type="button" class="btn btn-primary">+1</button>
+  <div class="card-body bg-light">
+      <img class="img-thumbnail float-right"
+        src="//api.angular.schule/avatar/{{ book.rating }}">
+    <div class="card-title">
+      <h2>
+        {{ book.title }}
+        <ng-container *brRepeat="book.rating">⭐️</ng-container>
+      </h2>
     </div>
+    <p>{{ book.description }}</p>
+
+    <button
+      (click)="doRateDown()"
+      class="btn btn-secondary mr-2">-1</button>
+
+    <button
+      (click)="doRateUp()"
+      class="btn btn-primary">+1</button>
+
   </div>
+</div>

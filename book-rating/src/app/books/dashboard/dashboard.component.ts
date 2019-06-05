@@ -9,10 +9,9 @@ import { BookRatingService } from '../shared/book-rating.service';
 })
 export class DashboardComponent implements OnInit {
 
+  books: Book[] = [];
 
-  books: Book[];
-
-  constructor(private bookRatingService: BookRatingService) { }
+  constructor(private bs: BookRatingService) { }
 
   ngOnInit() {
     this.books = [
@@ -24,44 +23,33 @@ export class DashboardComponent implements OnInit {
       },
       {
         isbn: '111',
-        title: 'Angular JS',
+        title: 'AngularJS',
         description: 'Altes Buch',
-        rating: 2
+        rating: 3
       },
       {
         isbn: '222',
         title: 'React',
-        description: 'Rotz',
-        rating: 0
-      },
-      {
-        isbn: '333',
-        title: 'Noch eins',
-        description: 'toll',
-        rating: 5
-      },
-      {
-        isbn: '444',
-        title: 'Meins',
-        description: 'schön',
-        rating: 5
+        description: 'Altes Buch',
+        rating: 1
       }
     ];
   }
 
   doRateDown(book: Book) {
-    const ratedBook = this.bookRatingService.rateDown(book);
+    const ratedBook = this.bs.rateDown(book);
     this.updateAndSortList(ratedBook);
   }
 
   doRateUp(book: Book) {
-    const ratedBook = this.bookRatingService.rateUp(book);
+    const ratedBook = this.bs.rateUp(book);
+    // const ratedBook = { ...book, rating: book.rating + 1 };
     this.updateAndSortList(ratedBook);
   }
 
-  updateAndSortList(book: Book) {
+  updateAndSortList(ratedBook: Book) {
     this.books = this.books
-      .map(b => b.isbn === book.isbn ? book : b)
+      .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
       .sort((a, b) => b.rating - a.rating);
   }
 

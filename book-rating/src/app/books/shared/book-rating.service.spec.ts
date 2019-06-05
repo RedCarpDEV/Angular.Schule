@@ -3,21 +3,18 @@ import { Book } from './book';
 
 describe('BookRatingService', () => {
 
+  // Arrange
   let service: BookRatingService;
-
   let book: Book;
 
   beforeEach(() => {
-
     service = new BookRatingService();
-
     book = {
-      isbn: '111',
-      title: 'Angular',
-      description: 'keine',
+      isbn: '000',
+      title: 'Test',
+      description: '',
       rating: 3
     };
-
   });
 
   it('[JIRA-222] should rate up a book by one', () => {
@@ -25,7 +22,7 @@ describe('BookRatingService', () => {
     expect(ratedBook.rating).toBe(4);
   });
 
-  it('[JIRA-223] should rate down a book by one', () => {
+  it('should rate down a book by one', () => {
     const ratedBook = service.rateDown(book);
     expect(ratedBook.rating).toBe(2);
   });
@@ -46,5 +43,4 @@ describe('BookRatingService', () => {
     const ratedBook = service.rateUp(book);
     expect(ratedBook).not.toBe(book);
   });
-
 });
