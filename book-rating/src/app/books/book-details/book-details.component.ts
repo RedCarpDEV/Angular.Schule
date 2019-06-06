@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Book } from '../shared/book';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'br-book-details',
@@ -8,10 +9,12 @@ import { Book } from '../shared/book';
 })
 export class BookDetailsComponent implements OnInit {
 
-  constructor() { }
+  isbn = '?';
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(m => this.isbn = m.get('isbn'));
   }
-
 
 }

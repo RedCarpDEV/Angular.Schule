@@ -20,4 +20,5 @@ export class BookComponent {
   doRateUp() {
     this.rateUp.emit(this.book);
   }
+
 }
