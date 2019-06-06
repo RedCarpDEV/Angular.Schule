@@ -39,9 +39,7 @@
   <div class="form-group container">
     <div class="row">
       <div class="col-md-auto">
-        <button
-          [disabled]="!bookForm.valid"
-          type="submit" class="btn btn-primary">Create</button>
+        <button [disabled]="!bookForm.valid" type="submit" class="btn btn-primary">Create</button>
       </div>
       <div class="col-sm">
         <div *ngIf="!bookForm.valid">
