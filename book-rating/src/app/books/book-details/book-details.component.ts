@@ -3,6 +3,7 @@ import { Book } from '../shared/book';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'br-book-details',
@@ -13,7 +14,9 @@ export class BookDetailsComponent implements OnInit {
 
   isbn: Observable<string>;
 
-  constructor(private route: ActivatedRoute) { }
+  book: Book;
+
+  constructor(private route: ActivatedRoute, private bookStoreService: BookStoreService) { }
 
   ngOnInit() {
     this.isbn = this.route.paramMap
