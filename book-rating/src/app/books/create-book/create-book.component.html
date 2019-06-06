@@ -1,0 +1,55 @@
+<form [formGroup]="bookForm" class="mb-4" (ngSubmit)="submitForm()">
+
+  <div class="form-group">
+    <label for="isbn">ISBN *</label>
+    <input formControlName="isbn" type="text" class="form-control" id="isbn">
+    <!--das ngif so wie hier is eklig... doppelter code un so
+    <div class="feedback-red" *ngIf="bookForm.get('isbn').dirty && bookForm.get('isbn').invalid">
+    -->
+
+    <!--
+    <div class="feedback-red" *ngIf="isInvalid('isbn')">
+      Bitte was eingeben...
+    </div>
+    -->
+
+    <div class="feedback-red text-right" *ngIf="hasError('isbn', 'required')">
+      Bitte ISBN eingeben...
+    </div>
+
+    <div class="feedback-red text-right" *ngIf="hasError('isbn', 'minlength')">
+      Die ISBN muss mindestens drei Zeichen lang sein...
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="title">Title *</label>
+    <input formControlName="title" type="text" class="form-control" id="title">
+
+    <div class="feedback-red text-right" *ngIf="hasError('title', 'required')">
+      Pflichtfeld...
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea formControlName="description" class="form-control" id="description"></textarea>
+  </div>
+
+  <div class="form-group container">
+    <div class=row>
+      <div class=col-sm>
+          <button
+          [disabled]="!bookForm.valid"
+          type="submit" class="btn btn-primary">Create</button>
+      </div>
+      <div class=col-sm>
+          <div *ngIf="!bookForm.valid">
+              falsch...
+            </div>
+      </div>
+    </div>
+  </div>
+
+
+</form>

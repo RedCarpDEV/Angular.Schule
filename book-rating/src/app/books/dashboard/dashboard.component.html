@@ -1,3 +1,5 @@
+<br-create-book (bookCreated)="createBook($event)"></br-create-book>
+
 <div
   *ngFor="let b of books; odd as o"
   [ngClass]="{ grayBackground: o }"
