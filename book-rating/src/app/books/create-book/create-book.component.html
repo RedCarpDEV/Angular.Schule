@@ -37,16 +37,16 @@
   </div>
 
   <div class="form-group container">
-    <div class=row>
-      <div class=col-sm>
-          <button
+    <div class="row">
+      <div class="col-md-auto">
+        <button
           [disabled]="!bookForm.valid"
           type="submit" class="btn btn-primary">Create</button>
       </div>
-      <div class=col-sm>
-          <div *ngIf="!bookForm.valid">
-              falsch...
-            </div>
+      <div class="col-sm">
+        <div *ngIf="!bookForm.valid">
+          falsch...
+        </div>
       </div>
     </div>
   </div>
