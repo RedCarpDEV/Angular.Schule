@@ -1,1 +1,10 @@
 <h1>{{ (book$ | async)?.title }}</h1>
+<h2>{{ (book$ | async)?.isbn }}</h2>
+
+<button class="btn btn-primary" (click)="showDescription = true">Show Description</button><br>
+
+<p *ngIf="showDescription">Test?! {{ (book$ | async)?.description }}</p>
+<br>
+<a routerLink="/book/222">error book</a>
+<br>
+<a routerLink="/book/9783864903571">mybook</a>
