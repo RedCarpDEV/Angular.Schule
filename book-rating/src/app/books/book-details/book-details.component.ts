@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of, from } from 'rxjs';
+import { Observable, of, from, observable, Subscriber } from 'rxjs';
 import { map, switchMap, retry } from 'rxjs/operators';
 import { BookStoreService } from '../shared/book-store.service';
 
@@ -26,9 +26,6 @@ export class BookDetailsComponent implements OnInit {
       );
       */
 
-      // windows-taste punkt smylie editor
-
-      console.log('================');
 
       const observer = {
         next: x => console.log(x),
@@ -36,15 +33,19 @@ export class BookDetailsComponent implements OnInit {
         complete: () => console.log('Ende')
       };
 
-      of('😍', '😂', '😎').subscribe(observer);
+      const yObservable$ = new Observable(subscriber => {
+        subscriber.next('🤦‍');
+        subscriber.next('👌');
 
+        setTimeout(() => subscriber.next('🤷‍'), 1000);
+        setTimeout(() => subscriber.next('🙌'), 1000);
 
-      of('😍', '😂', '😎').subscribe(
-        x => console.log(x),
-        err => console.error(err),
-        () => console.log('Ende')
-        );
+        subscriber.complete();
+      });
 
+      const subscription = yObservable$.subscribe(observer);
+
+      setTimeout(() => subscription.unsubscribe(), 3000);
 
       console.log('================');
   }
