@@ -31,10 +31,8 @@ export class BookDetailsComponent implements OnInit {
             isbn: '111',
             description: '...',
             rating: 0
-          })))),
-          share()
+          }))))
       )
-      // .subscribe(c => this.book = c)
       ;
   }
 
